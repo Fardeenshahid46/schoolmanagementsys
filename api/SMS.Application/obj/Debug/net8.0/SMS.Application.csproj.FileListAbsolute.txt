@@ -1,0 +1,15 @@
+D:\SaaS\schoolmanagementsys\api\SMS.Application\bin\Debug\net8.0\SMS.Application.deps.json
+D:\SaaS\schoolmanagementsys\api\SMS.Application\bin\Debug\net8.0\SMS.Application.dll
+D:\SaaS\schoolmanagementsys\api\SMS.Application\bin\Debug\net8.0\SMS.Application.pdb
+D:\SaaS\schoolmanagementsys\api\SMS.Application\bin\Debug\net8.0\SMS.Domain.dll
+D:\SaaS\schoolmanagementsys\api\SMS.Application\bin\Debug\net8.0\SMS.Domain.pdb
+D:\SaaS\schoolmanagementsys\api\SMS.Application\obj\Debug\net8.0\SMS.Application.csproj.AssemblyReference.cache
+D:\SaaS\schoolmanagementsys\api\SMS.Application\obj\Debug\net8.0\SMS.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\SaaS\schoolmanagementsys\api\SMS.Application\obj\Debug\net8.0\SMS.Application.AssemblyInfoInputs.cache
+D:\SaaS\schoolmanagementsys\api\SMS.Application\obj\Debug\net8.0\SMS.Application.AssemblyInfo.cs
+D:\SaaS\schoolmanagementsys\api\SMS.Application\obj\Debug\net8.0\SMS.Application.csproj.CoreCompileInputs.cache
+D:\SaaS\schoolmanagementsys\api\SMS.Application\obj\Debug\net8.0\SMS.Appl.2ABFF9D4.Up2Date
+D:\SaaS\schoolmanagementsys\api\SMS.Application\obj\Debug\net8.0\SMS.Application.dll
+D:\SaaS\schoolmanagementsys\api\SMS.Application\obj\Debug\net8.0\refint\SMS.Application.dll
+D:\SaaS\schoolmanagementsys\api\SMS.Application\obj\Debug\net8.0\SMS.Application.pdb
+D:\SaaS\schoolmanagementsys\api\SMS.Application\obj\Debug\net8.0\ref\SMS.Application.dll
