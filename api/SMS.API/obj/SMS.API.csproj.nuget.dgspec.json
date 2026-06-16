@@ -62,6 +62,16 @@
           "framework": "net8.0",
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.11, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.6.2, )"
@@ -121,6 +131,9 @@
             "projectReferences": {
               "D:\\SaaS\\schoolmanagementsys\\api\\SMS.Domain\\SMS.Domain.csproj": {
                 "projectPath": "D:\\SaaS\\schoolmanagementsys\\api\\SMS.Domain\\SMS.Domain.csproj"
+              },
+              "D:\\SaaS\\schoolmanagementsys\\api\\SMS.Persistence\\SMS.Persistence.csproj": {
+                "projectPath": "D:\\SaaS\\schoolmanagementsys\\api\\SMS.Persistence\\SMS.Persistence.csproj"
               }
             }
           }
@@ -141,6 +154,16 @@
         "net8.0": {
           "framework": "net8.0",
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.11, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -282,6 +305,16 @@
         "net8.0": {
           "framework": "net8.0",
           "targetAlias": "net8.0",
+          "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.11, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -331,9 +364,6 @@
             "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\SaaS\\schoolmanagementsys\\api\\SMS.Application\\SMS.Application.csproj": {
-                "projectPath": "D:\\SaaS\\schoolmanagementsys\\api\\SMS.Application\\SMS.Application.csproj"
-              },
               "D:\\SaaS\\schoolmanagementsys\\api\\SMS.Domain\\SMS.Domain.csproj": {
                 "projectPath": "D:\\SaaS\\schoolmanagementsys\\api\\SMS.Domain\\SMS.Domain.csproj"
               }
@@ -356,6 +386,22 @@
         "net8.0": {
           "framework": "net8.0",
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.11, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
