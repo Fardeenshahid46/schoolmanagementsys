@@ -30,25 +30,32 @@ public class TenantResolutionMiddleware
             return;
         }
 
-        // Return 400 if X-Tenant-Id header is missing
-        if (!context.Request.Headers.TryGetValue("X-Tenant-Id", out var tenantIdHeader)
-            || string.IsNullOrWhiteSpace(tenantIdHeader.ToString()))
-        {
-            context.Response.StatusCode = StatusCodes.Status400BadRequest;
-            context.Response.ContentType = "application/json";
-            await context.Response.WriteAsJsonAsync(new { error = "X-Tenant-Id header is required." });
-            return;
-        }
+var tenantIdClaim = context.User.FindFirst("TenantId")?.Value;
 
-        // Return 400 if header value is not a valid GUID
-        if (!Guid.TryParse(tenantIdHeader.ToString(), out var tenantId))
-        {
-            context.Response.StatusCode = StatusCodes.Status400BadRequest;
-            context.Response.ContentType = "application/json";
-            await context.Response.WriteAsJsonAsync(new { error = "X-Tenant-Id header format is invalid." });
-            return;
-        }
+if (string.IsNullOrWhiteSpace(tenantIdClaim))
+{
+    context.Response.StatusCode = StatusCodes.Status401Unauthorized;
 
+    await context.Response.WriteAsJsonAsync(new
+    {
+        error = "Tenant claim not found."
+    });
+
+    return;
+}
+if (!Guid.TryParse(tenantIdClaim, out var tenantId))
+{
+    context.Response.StatusCode = StatusCodes.Status400BadRequest;
+
+    await context.Response.WriteAsJsonAsync(new
+    {
+        error = "Invalid tenant claim."
+    });
+
+    return;
+}
+
+ 
         // Return 404 if tenant does not exist in database
         var tenantExists = await dbContext.Tenants.AnyAsync(t => t.Id == tenantId && t.IsActive);
         if (!tenantExists)

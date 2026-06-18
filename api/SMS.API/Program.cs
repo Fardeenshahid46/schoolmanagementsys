@@ -1,6 +1,12 @@
+using SMS.Application.Features.Students.SearchStudents;
+using SMS.Application.Features.Students.DeleteStudent;
+using SMS.Application.Features.Students.UpdateStudent;
+using SMS.Application.Features.Students.GetStudentById;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using SMS.Application.Features.Students.CreateStudent;
+using SMS.Application.Features.Students.GetStudent;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using SMS.Persistence.Context;
@@ -26,6 +32,12 @@ builder.Services.AddTenantResolution();
 
 // Register Handlers
 builder.Services.AddScoped<LoginHandler>();
+builder.Services.AddScoped<CreateStudentHandler>();
+builder.Services.AddScoped<GetStudentHandler>();
+builder.Services.AddScoped<GetStudentByIdHandler>();
+builder.Services.AddScoped<UpdateStudentHandler>();
+builder.Services.AddScoped<DeleteStudentHandler>();
+builder.Services.AddScoped<SearchStudentHandler>();
 
 // Register Seeders
 builder.Services.AddScoped<DatabaseSeeder>();
@@ -103,9 +115,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.UseTenantResolution();
 app.UseAuthentication();
+app.UseTenantResolution();
 app.UseAuthorization();
 
 app.MapControllers();

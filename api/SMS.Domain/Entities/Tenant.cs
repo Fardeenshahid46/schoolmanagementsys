@@ -8,6 +8,7 @@ public class Tenant
     public bool IsActive { get; set; }
     public DateTime CreatedAt { get; set; }
 
-    // Navigation Properties
-    public ICollection<ApplicationUser> ApplicationUsers { get; set; } = new List<ApplicationUser>();
+public ICollection<ApplicationUser> ApplicationUsers { get; set; } = new List<ApplicationUser>();
+
+public ICollection<Student> Students { get; set; } = new List<Student>();
 }
