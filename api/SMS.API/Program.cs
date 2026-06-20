@@ -1,3 +1,9 @@
+using SMS.Application.Features.Teachers.SearchTeachers;
+using SMS.Application.Features.Teachers.DeleteTeacher;
+using SMS.Application.Features.Teachers.UpdateTeacher;
+using SMS.Application.Features.Teachers.GetTeacherById;
+using SMS.Application.Features.Teachers.GetTeacher;
+using SMS.Application.Features.Teachers.CreateTeacher;
 using SMS.Application.Features.Students.SearchStudents;
 using SMS.Application.Features.Students.DeleteStudent;
 using SMS.Application.Features.Students.UpdateStudent;
@@ -38,6 +44,12 @@ builder.Services.AddScoped<GetStudentByIdHandler>();
 builder.Services.AddScoped<UpdateStudentHandler>();
 builder.Services.AddScoped<DeleteStudentHandler>();
 builder.Services.AddScoped<SearchStudentHandler>();
+builder.Services.AddScoped<CreateTeacherHandler>();
+builder.Services.AddScoped<GetTeacherHandler>();
+builder.Services.AddScoped<GetTeacherByIdHandler>();
+builder.Services.AddScoped<UpdateTeacherHandler>();
+builder.Services.AddScoped<DeleteTeacherHandler>();
+builder.Services.AddScoped<SearchTeacherHandler>();
 
 // Register Seeders
 builder.Services.AddScoped<DatabaseSeeder>();
