@@ -1,3 +1,6 @@
+using SMS.Application.Features.TeacherSubjects.CreateTeacherSubject;
+using SMS.Application.Features.TeacherSubjects.GetTeacherSubjects;
+using SMS.Application.Features.TeacherSubjects.DeleteTeacherSubject;
 using SMS.Application.Features.Subjects.UpdateSubject;
 using SMS.Application.Features.Subjects.DeleteSubject;
 using SMS.Application.Features.Subjects.SearchSubjects;
@@ -74,6 +77,10 @@ builder.Services.AddScoped<GetSubjectByIdHandler>();
 builder.Services.AddScoped<DeleteSubjectHandler>();
 builder.Services.AddScoped<SearchSubjectHandler>();
 builder.Services.AddScoped<UpdateSubjectHandler>();
+builder.Services.AddScoped<CreateTeacherSubjectHandler>();
+builder.Services.AddScoped<GetTeacherSubjectsHandler>();
+builder.Services.AddScoped<DeleteTeacherSubjectHandler>();
+builder.Services.AddScoped<DeleteTeacherSubjectHandler>();
 
 // Register Seeders
 builder.Services.AddScoped<DatabaseSeeder>();
