@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SMS.Persistence.Context;
 
@@ -11,9 +12,11 @@ using SMS.Persistence.Context;
 namespace SMS.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260621095455_AddClassesTable")]
+    partial class AddClassesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -188,35 +191,6 @@ namespace SMS.Persistence.Migrations
                     b.ToTable("Students");
                 });
 
-            modelBuilder.Entity("SMS.Domain.Entities.Subject", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<Guid>("TenantId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TenantId");
-
-                    b.ToTable("Subjects");
-                });
-
             modelBuilder.Entity("SMS.Domain.Entities.Teacher", b =>
                 {
                     b.Property<Guid>("Id")
@@ -264,35 +238,6 @@ namespace SMS.Persistence.Migrations
                     b.HasIndex("TenantId");
 
                     b.ToTable("Teachers");
-                });
-
-            modelBuilder.Entity("SMS.Domain.Entities.TeacherSubject", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<Guid>("SubjectId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("TeacherId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("TenantId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SubjectId");
-
-                    b.HasIndex("TeacherId");
-
-                    b.HasIndex("TenantId");
-
-                    b.ToTable("TeacherSubjects");
                 });
 
             modelBuilder.Entity("SMS.Domain.Entities.Tenant", b =>
@@ -369,17 +314,6 @@ namespace SMS.Persistence.Migrations
                     b.Navigation("Tenant");
                 });
 
-            modelBuilder.Entity("SMS.Domain.Entities.Subject", b =>
-                {
-                    b.HasOne("SMS.Domain.Entities.Tenant", "Tenant")
-                        .WithMany("Subjects")
-                        .HasForeignKey("TenantId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Tenant");
-                });
-
             modelBuilder.Entity("SMS.Domain.Entities.Teacher", b =>
                 {
                     b.HasOne("SMS.Domain.Entities.Tenant", "Tenant")
@@ -387,33 +321,6 @@ namespace SMS.Persistence.Migrations
                         .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Tenant");
-                });
-
-            modelBuilder.Entity("SMS.Domain.Entities.TeacherSubject", b =>
-                {
-                    b.HasOne("SMS.Domain.Entities.Subject", "Subject")
-                        .WithMany()
-                        .HasForeignKey("SubjectId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("SMS.Domain.Entities.Teacher", "Teacher")
-                        .WithMany()
-                        .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("SMS.Domain.Entities.Tenant", "Tenant")
-                        .WithMany()
-                        .HasForeignKey("TenantId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Subject");
-
-                    b.Navigation("Teacher");
 
                     b.Navigation("Tenant");
                 });
@@ -430,8 +337,6 @@ namespace SMS.Persistence.Migrations
                     b.Navigation("Classes");
 
                     b.Navigation("Students");
-
-                    b.Navigation("Subjects");
 
                     b.Navigation("Teachers");
                 });

@@ -43,7 +43,7 @@ public class SearchTeacherHandler
                 t.Email.Contains(query.Search));
         }
 
-        var totalRecords = await teachersQuery.CountAsync(
+        var totalCount = await teachersQuery.CountAsync(
             cancellationToken);
 
         var teachers = await teachersQuery
@@ -62,10 +62,10 @@ public class SearchTeacherHandler
 
         return new PagedTeacherResponseDto
         {
-            TotalRecords = totalRecords,
+            TotalCount = totalCount,
             PageNumber = query.PageNumber,
             PageSize = query.PageSize,
-            Teachers = teachers
+            Items = teachers
         };
     }
 }

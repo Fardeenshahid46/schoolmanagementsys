@@ -1,8 +1,8 @@
-using SMS.Application.Features.Teachers.GetTeacher;
+using SMS.Application.Features.Classes.GetClass;
 
 namespace SMS.Application.DTOs;
 
-public class PagedTeacherResponseDto
+public class PagedClassResponseDto
 {
     public int TotalRecords { get; set; }
 
@@ -10,6 +10,6 @@ public class PagedTeacherResponseDto
 
     public int PageSize { get; set; }
 
-    public List<TeacherListItemDto> Teachers { get; set; }
+    public List<ClassListItemDto> Classes { get; set; }
         = new();
 }

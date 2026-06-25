@@ -13,4 +13,9 @@ public ICollection<ApplicationUser> ApplicationUsers { get; set; } = new List<Ap
 public ICollection<Student> Students { get; set; } = new List<Student>();
 public ICollection<Teacher> Teachers { get; set; }
 = new List<Teacher>();
+    public ICollection<SchoolClass> Classes { get; set; }
+        = new List<SchoolClass>();
+
+    public ICollection<Subject> Subjects { get; set; }
+        = new List<Subject>();
 }

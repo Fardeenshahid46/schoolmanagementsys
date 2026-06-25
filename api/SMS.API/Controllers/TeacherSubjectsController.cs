@@ -4,6 +4,7 @@ using SMS.Application.DTOs;
 using SMS.Application.Features.TeacherSubjects.CreateTeacherSubject;
 using SMS.Application.Features.TeacherSubjects.GetTeacherSubjects;
 using SMS.Application.Features.TeacherSubjects.DeleteTeacherSubject;
+using SMS.Application.Features.TeacherSubjects.SearchTeacherSubjects;
 
 namespace SMS.API.Controllers;
 
@@ -15,15 +16,18 @@ public class TeacherSubjectsController : ControllerBase
     private readonly CreateTeacherSubjectHandler _createTeacherSubjectHandler;
     private readonly GetTeacherSubjectsHandler _getTeacherSubjectsHandler;
     private readonly DeleteTeacherSubjectHandler _deleteTeacherSubjectHandler;
+    private readonly SearchTeacherSubjectHandler _searchTeacherSubjectHandler;
 
     public TeacherSubjectsController(
         CreateTeacherSubjectHandler createTeacherSubjectHandler,
         GetTeacherSubjectsHandler getTeacherSubjectsHandler,
-        DeleteTeacherSubjectHandler deleteTeacherSubjectHandler)
+        DeleteTeacherSubjectHandler deleteTeacherSubjectHandler,
+        SearchTeacherSubjectHandler searchTeacherSubjectHandler)
     {
         _createTeacherSubjectHandler = createTeacherSubjectHandler;
         _getTeacherSubjectsHandler = getTeacherSubjectsHandler;
         _deleteTeacherSubjectHandler = deleteTeacherSubjectHandler;
+        _searchTeacherSubjectHandler = searchTeacherSubjectHandler;
     }
 
     [HttpPost]
@@ -48,6 +52,17 @@ public class TeacherSubjectsController : ControllerBase
     {
         var result = await _getTeacherSubjectsHandler
             .HandleAsync(teacherId, cancellationToken);
+
+        return Ok(result);
+    }
+
+    [HttpGet("search")]
+    public async Task<ActionResult<PagedTeacherSubjectResponseDto>> Search(
+        [FromQuery] GetTeacherSubjectQuery query,
+        CancellationToken cancellationToken)
+    {
+        var result = await _searchTeacherSubjectHandler
+            .HandleAsync(query, cancellationToken);
 
         return Ok(result);
     }

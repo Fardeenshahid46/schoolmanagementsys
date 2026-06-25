@@ -1,6 +1,5 @@
 using SMS.Application.Features.Students.GetStudent;
 using Microsoft.EntityFrameworkCore;
-using SMS.Application.DTOs;
 using SMS.Domain.Interfaces;
 using SMS.Persistence.Context;
 
@@ -43,7 +42,7 @@ public class SearchStudentHandler
                 s.AdmissionNumber.Contains(query.Search));
         }
 
-        var totalRecords = await studentsQuery.CountAsync(
+        var totalCount = await studentsQuery.CountAsync(
             cancellationToken);
 
         var students = await studentsQuery
@@ -63,10 +62,10 @@ public class SearchStudentHandler
 
         return new PagedStudentResponseDto
         {
-            TotalRecords = totalRecords,
+            TotalCount = totalCount,
             PageNumber = query.PageNumber,
             PageSize = query.PageSize,
-            Students = students
+            Items = students
         };
     }
-}
+}

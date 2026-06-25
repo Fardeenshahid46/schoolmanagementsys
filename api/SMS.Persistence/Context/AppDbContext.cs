@@ -14,6 +14,9 @@ public class AppDbContext : DbContext
     public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
     public DbSet<Student> Students => Set<Student>();
     public DbSet<Teacher> Teachers => Set<Teacher>();
+    public DbSet<SchoolClass> Classes => Set<SchoolClass>();
+    public DbSet<Subject> Subjects => Set<Subject>();
+    public DbSet<TeacherSubject> TeacherSubjects => Set<TeacherSubject>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
